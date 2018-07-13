@@ -96,7 +96,7 @@ hr {
 }
 
 .products {
-  font-family:'Zilla Slab', serif;
+  font-family:'Zilla Slab', serif !important;
   font-weight: 300 !important;
   font-size: 18px;
 }
