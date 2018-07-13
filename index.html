@@ -18,33 +18,168 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-
     <!-- Custom styles for this template -->
     <link href="sticky-footer.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
-  </head>
+    <!-- Search -->
+    <script>
+      function myFunction() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+    </script>
 
-  <body>
-    <!-- Begin page content -->
-    <main role="main" class="container">
-      <h1 style="font-weight: 600 !important;" class="mt-5">The Ultimate Bullet Journaling Resource List for Beginners</h1>
-      <br>
-      <div class="row">
-        <div class="col-sm">
-          One of three columns
-        </div>
-        <div class="col-sm">
-          One of three columns
-        </div>
-        <div class="col-sm">
-          One of three columns
+    <!-- Sort Table -->
+    <script>
+      function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc"; 
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+          //start by saying: no switching is done:
+          switching = false;
+          rows = table.getElementsByTagName("TR");
+          /*Loop through all table rows (except the
+          first, which contains table headers):*/
+          for (i = 1; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            /*check if the two rows should switch place,
+            based on the direction, asc or desc:*/
+            if (dir == "asc") {
+              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch= true;
+                break;
+              }
+            } else if (dir == "desc") {
+              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+              }
+            }
+          }
+          if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            //Each time a switch is done, increase this count by 1:
+            switchcount ++;      
+          } else {
+            /*If no switching has been done AND the direction is "asc",
+            set the direction to "desc" and run the while loop again.*/
+            if (switchcount == 0 && dir == "asc") {
+              dir = "desc";
+              switching = true;
+            }
+          }
+        }
+        }
+    </script>
+
+</head>
+
+<body>
+  <!-- Begin page content -->
+  <main role="main" class="container">
+    <h1 style="font-weight: 600 !important;" class="mt-5">The Ultimate Bullet Journaling Resource List for Beginners</h1>
+    <!-- Starter Pack -->
+    <hr style="margin-top: 25px;">
+    <h4 style="margin-top: 25px; font-weight: 600 !important;">Starter Pack&nbsp;&nbsp;&nbsp;<span class="text-info tiny-head">Begin with only $20</span></h4>
+    <div style="margin-top: 15px;" class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><img class="head-icon" width="20" src="agenda-hand-drawn-tool-outline.png"> Dot Journal</h5>
+            <p class="card-text">Affordable, high quality notebook.</p>
+            <a target="_blank" href="http://www.michaels.com/search?q=Dot%20Journal%20By%20Artists%20Loft" class="btn btn-info">Buy Now for $5</a>
+          </div>
         </div>
       </div>
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <p style="opacity: 0.35 !important;text-align: center;font-size: 12px;color: #000 !important;">Created by Peter DeNatale</p>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><img class="head-icon" width="20" src="pen-hand-drawn-tool-outline.png"> Fine Tip Pens</h5>
+            <p class="card-text">Basic selection of ten vivid colors.</p>
+            <a target="_blank" href="https://amzn.to/2ujyzqX" class="btn btn-info">Buy Now for $5</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><img class="head-icon" width="22" src="tape.png"> Washi Tape</h5>
+            <p class="card-text">Decorative designs, three per pack.</p>
+            <a target="_blank" href="https://amzn.to/2LceWeg" class="btn btn-info">Buy Now for $10</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Header -->
+    <hr style="margin-top: 25px !important;">
+    <h4 style="display: block; float: left; margin-top: 15px; font-weight: 600 !important;">Up Your Journaling Game</h4>
+    <form style="display: !important; float: right !important;" class="form-inline search-tbl">
+      <input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for something..." title="Search">
+    </form>
+    <table style="width: 100%;" id="myTable">
+      <tr class="header">
+        <th class="tiny-head" style="cursor: pointer;width:70%" onclick="sortTable(0)">Product Name<span class="sorting">Sort</span></th>
+        <th class="tiny-head" style="cursor: pointer;width:25%" onclick="sortTable(1)">Price<span class="sorting">Sort</span></th>
+        <th class="tiny-head" style="width:5%"></th>
+      </tr>
+      <tr>
+        <td class="products">Test Product 1</td>
+        <td class="products">$1.00</td>
+        <td><a class="buy-link" target="_blank" href="https://www.amazon.com/Fineliner-Calendar-Coloring-Stationary-Supplies/dp/B0772XSNXY">Buy</a></td>
+      </tr>
+      <tr>
+        <td class="products">Test Product 2</td>
+        <td class="products">$2.00</td>
+        <td><a class="buy-link" target="_blank" href="https://www.amazon.com/Fineliner-Calendar-Coloring-Stationary-Supplies/dp/B0772XSNXY">Buy</a></td>
+      </tr>
+      <tr>
+        <td class="products">Test Product 3</td>
+        <td class="products">$3.00</td>
+        <td><a class="buy-link" target="_blank" href="https://www.amazon.com/Fineliner-Calendar-Coloring-Stationary-Supplies/dp/B0772XSNXY">Buy</a></td>
+      </tr>
+      <tr>
+        <td class="products">Test Product 4</td>
+        <td class="products">$4.00</td>
+        <td><a class="buy-link" target="_blank" href="https://www.amazon.com/Fineliner-Calendar-Coloring-Stationary-Supplies/dp/B0772XSNXY">Buy</a></td>
+      </tr>
+    </table>
+  </main>
+  <br><br>
+  <footer class="footer">
+    <div class="container">
+      <center><p style="margin-top: 16px;font-family:'Avenir', sans-serif;font-weight: 300 !important;font-size: 11px;letter-spacing: 1px;text-transform: uppercase;"><a class="text-secondary" href="http://www.amazon.com/tryprimefree?tag=journaling05-20" target="_blank">Get <em>FREE SHIPPING</em> when you sign up for a <em>FREE Prime 30-day Trial</em> on Amazon!</a></p>
+        <p class="text-secondary" style="font-weight: 300 !important;font-size: 12px;">Created by Peter DeNatale</p></center>
       </div>
     </footer>
   </body>
