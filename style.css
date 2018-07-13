@@ -64,6 +64,11 @@ a:hover {
   border-radius: 5px !important;
 }
 
+.btn-info:hover {
+  background-color: #6eb3de !important;
+  border-color: #6eb3de !important;
+}
+
 .head-icon {
   margin-top:-5px;
   margin-right:5px;
