@@ -25,7 +25,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js" ></script>
     <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.2/bootstrap-float-label.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.26.5/js/jquery.tablesorter.min.js"></script> 
 
     <!-- Search -->
     <script>
@@ -100,7 +99,7 @@
     <div id="myBtnContainer" style="margin-top:-10px;margin-bottom:10px;">
       <button onclick="filterSelection('all')" style="font-size: 13px; margin-left: 0px;margin-right: 5px;" class="badge">Show All</button>
       <button onclick="filterSelection('journal')" style="font-size: 13px; margin-left: 5px;margin-right: 5px;" class="badge badge-info">Journals</button>
-      <button onclick="filterSelection('pens')" style="font-size: 13px; margin-left: 5px;margin-right: 5px;" class="badge badge-secondary">Pens/Markers</button>
+      <button onclick="filterSelection('pens')" style="font-size: 13px; margin-left: 5px;margin-right: 5px;" class="badge badge-secondary">Writing Utensils</button>
       <button onclick="filterSelection('notes')" style="font-size: 13px; margin-left: 5px;margin-right: 5px;" class="badge badge-danger">Notes/Stationary</button>
       <button onclick="filterSelection('stickers')" style="font-size: 13px; margin-left: 5px;margin-right: 5px;" class="badge badge-success">Stickers/Tape</button>
       <button onclick="filterSelection('tools')" style="font-size: 13px; margin-left: 5px;margin-right: 5px;" class="badge badge-warning">Tools</button>
@@ -109,12 +108,17 @@
     <table id="myTable" class="tablesorter">
       <thead>
       <tr class="header">
-        <th class="tiny-head" style="cursor: pointer;width:100%!important;">Product<span class="sorting">Sort</span></th>
-        <th class="tiny-head" style="display:none;cursor: pointer;width:20%!important;">Price</th>
+        <th class="tiny-head" style="width:100%!important;">Product</th>
+        <th class="tiny-head" style="display:none;width:20%!important;">Price</th>
         <th class="tiny-head" style="width:0%!important;"></th>
       </tr>
     </thead>
     <tbody>
+      <tr class="filterDiv stickers"> 
+        <td class="products stickers name">Avery Mini Ultra Tabs, 40 Tabs</td>
+        <td class="products price">$3.00</td>
+        <td><a class="buy-link" target="_blank" href="https://amzn.to/2NPi4em">Buy</a></td>
+      </tr>
       <tr class="filterDiv journal">
         <td class="products journal name">Leuchtturm1917 Dot Journal</td>
         <td class="products price">$20.00</td>
@@ -136,61 +140,56 @@
         <td><a class="buy-link" target="_blank" href="https://www.amazon.com/Fineliner-Calendar-Coloring-Stationary-Supplies/dp/B0772XSNXY">Buy</a></td>
       </tr>
       <tr class="filterDiv tools">
-          <td class="products tools name">Test Product 4</td>
-          <td class="products price">$8.00</td>
-          <td><a class="buy-link" target="_blank" href="https://www.amazon.com/Fineliner-Calendar-Coloring-Stationary-Supplies/dp/B0772XSNXY">Buy</a></td>
-        </tr>
+        <td class="products tools name">Test Product 4</td>
+        <td class="products price">$8.00</td>
+        <td><a class="buy-link" target="_blank" href="https://www.amazon.com/Fineliner-Calendar-Coloring-Stationary-Supplies/dp/B0772XSNXY">Buy</a></td>
+      </tr>
     </tbody>
     </table>
-    <script>$(document).ready(function() 
-        { 
-            $("#myTable").tablesorter(); 
-        } 
-    ); </script>
     <script>
-filterSelection("all")
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-  }
-}
+      filterSelection("all")
+      function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+          w3RemoveClass(x[i], "show");
+          if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+      }
 
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+      }
 
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);     
-    }
-  }
-  element.className = arr1.join(" ");
-}
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+          }
+        }
+        element.className = arr1.join(" ");
+      }
 
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-</script>
+      // Add active class to the current button (highlight it)
+      var btnContainer = document.getElementById("myBtnContainer");
+      var btns = btnContainer.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function(){
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+  </script>
   </main>
   <br><br>
   <footer class="footer">
